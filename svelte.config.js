@@ -16,6 +16,8 @@ const config = {
       assets: "build",
       fallback: null,
     }),
+    hydrate: true,
+    ssr: false,
   },
 };
 
