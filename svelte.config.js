@@ -16,6 +16,9 @@ const config = {
       assets: "build",
       fallback: null,
     }),
+    files: {
+      lib: "src/lib",
+    },
     hydrate: true,
     ssr: false,
   },
