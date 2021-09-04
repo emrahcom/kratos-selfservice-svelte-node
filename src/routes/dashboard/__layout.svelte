@@ -10,7 +10,7 @@ export async function load({fetch}) {
   } catch {
     return {
       status: 302,
-      redirect: `${SECUREAPP}/auth/login`,
+      redirect: `${KRATOS}/login/browser`,
     }
   }
 }
