@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-import { KRATOS, SECUREAPP } from "$lib/config.ts";
+import { KRATOS } from "$lib/config.ts";
 
 export async function load({fetch}) {
   try {
