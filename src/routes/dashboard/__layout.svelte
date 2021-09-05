@@ -4,7 +4,10 @@ import { KRATOS } from "$lib/config.ts";
 export async function load({fetch}) {
   try {
     const url = `${KRATOS}/sessions/whoami`;
-    const res = await fetch(url, {credentials: "include"});
+    const res = await fetch(url, {
+      credentials: "include",
+      mode: "cors"
+    });
 
     if (res.status != 200) throw new Error("no authorization");
   } catch {
