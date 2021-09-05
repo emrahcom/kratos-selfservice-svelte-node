@@ -1,7 +1,13 @@
 <script lang="ts">
-const qs = new URLSearchParams(window.location.search);
-const flow = qs.get("flow");
+import render from "$lib/render.ts";
+
+const rPromise = render("login");
 </script>
 
 <h1>login</h1>
-{flow}
+
+{#await rPromise then form}
+{form.ui.action}
+{:catch err}
+{err.message}
+{/await}

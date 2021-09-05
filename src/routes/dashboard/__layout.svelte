@@ -6,6 +6,9 @@ export async function load({fetch}) {
     const url = `${KRATOS}/sessions/whoami`;
     const res = await fetch(url, {
       credentials: "include",
+      headers: {
+        "Accept": "application/json",
+      },
       mode: "cors"
     });
 
