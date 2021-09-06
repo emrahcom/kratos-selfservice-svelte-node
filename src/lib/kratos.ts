@@ -22,5 +22,5 @@ async function getDataModels(flow: string, flowId: string) {
 export async function renderForm(flow: string, flowId: string) {
   const dm = await getDataModels(flow, flowId);
 
-  return dm.ui.action
+  return dm.ui.action;
 }
