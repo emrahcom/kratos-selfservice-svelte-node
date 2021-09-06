@@ -1,13 +1,14 @@
 <script lang="ts">
-import render from "$lib/render.ts";
+import { getFlowId, render } from "$lib/kratos.ts";
 
-const rPromise = render("login");
+const flowId = getFlowId();
+const rendering = render("login", flowId);
 </script>
 
 <h1>login</h1>
 
-{#await rPromise then form}
-{form.ui.action}
+{#await rendering then renderedForm}
+{renderedForm}
 {:catch err}
 {err.message}
 {/await}

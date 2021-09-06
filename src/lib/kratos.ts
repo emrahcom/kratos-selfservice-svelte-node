@@ -1,8 +1,11 @@
 import { KRATOS } from "$lib/config.ts";
 
-async function getDataModels(flow) {
+export function getFlowId() {
   const qs = new URLSearchParams(window.location.search);
-  const flowId = qs.get("flow");
+  return qs.get("flow");
+}
+
+async function getDataModels(flow, flowId) {
   const url = `${KRATOS}/self-service/${flow}?flow=${flowId}`;
 
   const res = await fetch(url, {
@@ -16,6 +19,8 @@ async function getDataModels(flow) {
   return await res.json();
 }
 
-export default function (flow) {
-  return getDataModels(flow);
+export async function render(flow, flowId) {
+  const dm = await getDataModels(flow, flowId);
+
+  return "rendered";
 }
