@@ -1,14 +1,16 @@
 <script lang="ts">
-import { getFlowId, renderForm } from "$lib/kratos";
+import { getDataModels, getFlowId, renderLogin } from "$lib/kratos";
 
 const flowId = getFlowId();
-const rendering = renderForm("login", flowId);
+const rendering = getDataModels("login", flowId)
+  .then((dm) => renderLogin(dm));
 </script>
 
 <h1>login</h1>
 
-{#await rendering then renderedForm}
-{renderedForm}
-{:catch}
+{#await rendering then rendered}
+{rendered}
+{:catch err}
+{err.message}
 something went wrong
 {/await}

@@ -1,6 +1,66 @@
 import { KRATOS } from "$lib/config";
 
 // -----------------------------------------------------------------------------
+export interface Attributes {
+  name: string;
+  type: string;
+  value?: string;
+  disabled: boolean;
+  required?: boolean;
+}
+
+// -----------------------------------------------------------------------------
+export interface Label {
+  id: number;
+  type: string;
+  text: string;
+  context?: unknown;
+}
+
+// -----------------------------------------------------------------------------
+export interface Message {
+  id: number;
+  type: string;
+  text: string;
+}
+
+// -----------------------------------------------------------------------------
+export interface Meta {
+  type: string;
+  label?: Label;
+}
+
+// -----------------------------------------------------------------------------
+export interface Node {
+  type: string;
+  group: string;
+  attributes: Attributes;
+  messages: Message[];
+  meta: Meta;
+}
+
+// -----------------------------------------------------------------------------
+export interface UI {
+  action: string;
+  method: string;
+  "updated_at": string;
+  messages: Message[];
+  nodes: Node[];
+}
+// -----------------------------------------------------------------------------
+export interface Login {
+  id: string;
+  type: string;
+  forced: boolean;
+  "created_at": string;
+  "issued_at": string;
+  "updated_at": string;
+  "expires_at": string;
+  "request_url": string;
+  ui: UI;
+}
+
+// -----------------------------------------------------------------------------
 export async function isAuthenticated() {
   const url = `${KRATOS}/sessions/whoami`;
   const res = await fetch(url, {
@@ -22,7 +82,7 @@ export function getFlowId() {
 }
 
 // -----------------------------------------------------------------------------
-async function getDataModels(flow: string, flowId: string) {
+export async function getDataModels(flow: string, flowId: string) {
   const url = `${KRATOS}/self-service/${flow}?flow=${flowId}`;
   const res = await fetch(url, {
     credentials: "include",
@@ -36,8 +96,6 @@ async function getDataModels(flow: string, flowId: string) {
 }
 
 // -----------------------------------------------------------------------------
-export async function renderForm(flow: string, flowId: string) {
-  const dm = await getDataModels(flow, flowId);
-
-  return dm.ui.action;
+export function renderLogin(dm: Login) {
+  return dm.ui.nodes[1].attributes.name;
 }
