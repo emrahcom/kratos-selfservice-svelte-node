@@ -1,23 +1,16 @@
 <script lang="ts" context="module">
 import { KRATOS } from "$lib/config";
+import { isAuthenticated } from "$lib/kratos";
 
 export async function load({fetch}) {
-  try {
-    const url = `${KRATOS}/sessions/whoami`;
-    const res = await fetch(url, {
-      credentials: "include",
-      headers: {
-        "Accept": "application/json",
-      },
-      mode: "cors"
-    });
+  const isAuth = await isAuthenticated()
+    .catch(() => false);
 
-    if (res.status != 200) throw new Error("no authorization");
-  } catch {
+  if (isAuth !== true) {
     return {
       status: 302,
       redirect: `${KRATOS}/self-service/login/browser`,
-    }
+    };
   }
 }
 </script>
