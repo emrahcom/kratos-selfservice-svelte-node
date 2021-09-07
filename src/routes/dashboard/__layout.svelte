@@ -2,7 +2,7 @@
 import { KRATOS } from "$lib/config";
 import { isAuthenticated } from "$lib/kratos";
 
-export async function load({fetch}) {
+export async function load() {
   const isAuth = await isAuthenticated()
     .catch(() => false);
 
