@@ -43,21 +43,28 @@ export interface Node {
 export interface UI {
   action: string;
   method: string;
-  "updated_at": string;
   messages: Message[];
   nodes: Node[];
+  "updated_at": string;
 }
 // -----------------------------------------------------------------------------
 export interface Login {
   id: string;
   type: string;
   forced: boolean;
+  ui: UI;
   "created_at": string;
   "issued_at": string;
   "updated_at": string;
   "expires_at": string;
   "request_url": string;
-  ui: UI;
+}
+
+// -----------------------------------------------------------------------------
+export function getFlowId() {
+  const qs = new URLSearchParams(window.location.search);
+
+  return qs.get("flow");
 }
 
 // -----------------------------------------------------------------------------
@@ -72,13 +79,6 @@ export async function isAuthenticated() {
   });
 
   return (res.status === 200) ? true : false;
-}
-
-// -----------------------------------------------------------------------------
-export function getFlowId() {
-  const qs = new URLSearchParams(window.location.search);
-
-  return qs.get("flow");
 }
 
 // -----------------------------------------------------------------------------
