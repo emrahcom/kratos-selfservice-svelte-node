@@ -1,5 +1,7 @@
 <script lang="ts">
 import { SECUREAPP } from "$lib/config";
+import FieldSets from "$lib/components/fieldsets.svelte";
+import Messages from "$lib/components/messages.svelte";
 import type { Login } from "$lib/kratos";
 
 export let dm: Login;
@@ -9,10 +11,8 @@ export let dm: Login;
 </div>
 <div id="ui">
   <form action="${dm.ui.action}" method="${dm.ui.method}">
-  <div class="message"></div>
-  {#each dm.ui.nodes.filter((n) => n.type === "input") as node}
-    {node.attributes.name}
-  {/each}
+    <Messages messages={dm.ui.nodes.messages}/>
+    <FieldSets nodes={dm.ui.nodes}/>
   </form>
 </div>
 
