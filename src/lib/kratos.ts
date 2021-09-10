@@ -96,6 +96,6 @@ export async function getDataModels(flow: string, flowId: string) {
 }
 
 // -----------------------------------------------------------------------------
-export function renderLogin(dm: Login) {
-  return dm.ui.nodes[1].attributes.name;
+export function modelLogin(dm: Login) {
+  return dm;
 }
