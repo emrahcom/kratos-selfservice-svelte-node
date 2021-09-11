@@ -1,33 +1,26 @@
 <script lang="ts">
 import Messages from "$lib/components/messages.svelte";
+import Hidden from "$lib/components/fieldset-hidden.svelte";
+import Password from "$lib/components/fieldset-password.svelte";
+import Text from "$lib/components/fieldset-text.svelte";
+import Submit from "$lib/components/fieldset-submit.svelte";
 import type { Node } from "$lib/kratos";
 
 export let nodes: Node[];
 </script>
 
 {#each nodes.filter((n) => n.type === "input") as node}
-  <br/>
-
   <Messages messages={node.messages}/>
 
-  {#if node.meta}
-    meta -
-    {node.meta.type}<br/>
-    {#if node.meta.label}
-      label -
-      {node.meta.label.id} -
-      {node.meta.label.type} -
-      {node.meta.label.text} -
-      {node.meta.label.context}<br/>
-    {/if}
-  {/if}
-
-  {#if node.attributes}
-    attributes -
-    {node.attributes.name} -
-    {node.attributes.type} -
-    {node.attributes.value} -
-    {node.attributes.disabled} -
-    {node.attributes.required}<br/>
+  {#if node.attributes.type === "hidden"}
+    <Hidden {node}/>
+  {:else if node.attributes.type === "password"}
+    <Password {node}/>
+  {:else if node.attributes.type === "text"}
+    <Text {node}/>
+  {:else if node.attributes.type === "submit"}
+    <Submit {node}/>
+  {:else}
+    unknown
   {/if}
 {/each}
