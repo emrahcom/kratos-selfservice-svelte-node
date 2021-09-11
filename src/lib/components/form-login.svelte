@@ -1,17 +1,15 @@
 <script lang="ts">
 import { SECUREAPP } from "$lib/config";
 import Fieldsets from "$lib/components/fieldsets.svelte";
-import Messages from "$lib/components/messages.svelte";
+import MessagesGlobal from "$lib/components/messages-global.svelte";
 import type { Login } from "$lib/kratos";
 
 export let dm: Login;
 </script>
 
-<div class="messages-global">
-</div>
+<MessagesGlobal messages={dm.ui.messages}/>
 <div id="ui">
   <form action="${dm.ui.action}" method="${dm.ui.method}">
-    <Messages messages={dm.ui.nodes.messages}/>
     <Fieldsets nodes={dm.ui.nodes}/>
   </form>
 </div>

@@ -26,7 +26,7 @@ export interface Message {
 
 // -----------------------------------------------------------------------------
 export interface Meta {
-  type: string;
+  type?: string;
   label?: Label;
 }
 
