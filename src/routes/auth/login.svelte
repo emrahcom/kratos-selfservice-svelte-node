@@ -1,6 +1,6 @@
 <script lang="ts">
 import { getDataModels, getFlowId, modelLogin } from "$lib/kratos";
-import LoginForm from "$lib/components/login-form.svelte";
+import FormLogin from "$lib/components/form-login.svelte";
 
 const flowId = getFlowId();
 const modeling = getDataModels("login", flowId)
@@ -11,7 +11,7 @@ const modeling = getDataModels("login", flowId)
   <h5 class="subheading">Welcome to this example login screen!</h5>
 
 {#await modeling then dm}
-  <LoginForm {dm}/>
+  <FormLogin {dm}/>
 {:catch err}
   <h6>something went wrong</h6>
   {err.message}
