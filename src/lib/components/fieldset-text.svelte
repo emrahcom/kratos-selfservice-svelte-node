@@ -4,7 +4,7 @@ import type { Node } from "$lib/kratos";
 
 export let node: Node;
 
-const attr = node.attributes
+const attr = node.attributes;
 let labelText: string;
 
 try {
