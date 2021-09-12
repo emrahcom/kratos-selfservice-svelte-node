@@ -7,11 +7,11 @@ import type { Login } from "$lib/kratos";
 export let dm: Login;
 </script>
 
-<MessagesGlobal messages={dm.ui.messages}/>
+<MessagesGlobal messages={dm.ui.messages} />
 
 <div id="ui">
   <form action="{dm.ui.action}" method="{dm.ui.method}">
-    <Fieldsets nodes={dm.ui.nodes}/>
+    <Fieldsets nodes={dm.ui.nodes} />
   </form>
 </div>
 

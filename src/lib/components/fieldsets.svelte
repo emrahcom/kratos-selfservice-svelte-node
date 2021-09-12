@@ -10,17 +10,17 @@ export let nodes: Node[];
 </script>
 
 {#each nodes.filter((n) => n.type === "input") as node}
-  <Messages messages={node.messages}/>
+  <Messages messages={node.messages} />
 
   {#if node.attributes.type === "hidden"}
-    <Hidden {node}/>
+    <Hidden {node} />
   {:else if node.attributes.type === "password"}
-    <Password {node}/>
+    <Password {node} />
   {:else if node.attributes.type === "text"}
-    <Text {node}/>
+    <Text {node} />
   {:else if node.attributes.type === "submit"}
-    <Submit {node}/>
+    <Submit {node} />
   {:else}
-    unknown
+    unknow type
   {/if}
 {/each}

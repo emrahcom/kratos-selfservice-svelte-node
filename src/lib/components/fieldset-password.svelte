@@ -22,5 +22,5 @@ try {
     <span>{labelText}</span>
   </label>
 
-  <Messages messages={node.messages}/>
+  <Messages messages={node.messages} />
 </fieldset>
