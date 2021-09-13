@@ -22,11 +22,11 @@ export interface Message {
   id: number;
   type: string;
   text: string;
+  context?: unknown;
 }
 
 // -----------------------------------------------------------------------------
 export interface Meta {
-  type?: string;
   label?: Label;
 }
 
@@ -43,10 +43,11 @@ export interface Node {
 export interface UI {
   action: string;
   method: string;
-  messages: Message[];
+  messages?: Message[];
   nodes: Node[];
   "updated_at": string;
 }
+
 // -----------------------------------------------------------------------------
 export interface Login {
   id: string;
@@ -54,9 +55,9 @@ export interface Login {
   forced: boolean;
   ui: UI;
   "created_at": string;
+  "expires_at": string;
   "issued_at": string;
   "updated_at": string;
-  "expires_at": string;
   "request_url": string;
 }
 
