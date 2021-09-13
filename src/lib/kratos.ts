@@ -83,7 +83,7 @@ export async function isAuthenticated() {
 
 // -----------------------------------------------------------------------------
 export async function getDataModels(flow: string, flowId: string) {
-  const url = `${KRATOS}/self-service/${flow}?flow=${flowId}`;
+  const url = `${KRATOS}/self-service/${flow}/flows?id=${flowId}`;
   const res = await fetch(url, {
     credentials: "include",
     headers: {

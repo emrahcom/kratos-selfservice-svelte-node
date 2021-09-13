@@ -16,10 +16,10 @@ try {
 
 <fieldset>
   <label>
+    <span>{labelText}</span>
     <input type="password" name="{attr.name}" value="{attr.value || ""}"
       placeholder="{labelText}" disabled={attr.disabled}
       required={attr.required}>
-    <span>{labelText}</span>
   </label>
 
   <Messages messages={node.messages} />

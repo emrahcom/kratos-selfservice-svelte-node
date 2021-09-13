@@ -10,8 +10,6 @@ export let nodes: Node[];
 </script>
 
 {#each nodes.filter((n) => n.type === "input") as node}
-  <Messages messages={node.messages} />
-
   {#if node.attributes.type === "hidden"}
     <Hidden {node} />
   {:else if node.attributes.type === "password"}
