@@ -1,5 +1,4 @@
 <script lang="ts">
-import Messages from "$lib/components/messages.svelte";
 import Hidden from "$lib/components/fieldset-hidden.svelte";
 import Password from "$lib/components/fieldset-password.svelte";
 import Text from "$lib/components/fieldset-text.svelte";
