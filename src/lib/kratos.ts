@@ -50,6 +50,7 @@ export interface UI {
 
 // -----------------------------------------------------------------------------
 export interface Login {
+  instanceOf: "Login";
   id: string;
   type: string;
   forced: boolean;
@@ -59,6 +60,22 @@ export interface Login {
   "issued_at": string;
   "updated_at": string;
   "request_url": string;
+}
+
+export interface KratosError {
+  instanceOf: "KratosError";
+  error: {
+    code: number;
+    message: string;
+    status: string;
+    reason?: string;
+    details?: {
+      docs: string;
+      hint: string;
+      "redirect_to": string;
+      "reject_reason": string;
+    };
+  };
 }
 
 // -----------------------------------------------------------------------------
@@ -93,10 +110,13 @@ export async function getDataModels(flow: string, flowId: string) {
     mode: "cors",
   });
 
-  return await res.json();
+  const dm = await res.json();
+  dm.instanceOf = dm.ui ? "Login" : "KratosError";
+
+  return dm;
 }
 
 // -----------------------------------------------------------------------------
-export function modelLogin(dm: Login) {
+export function modelLogin(dm: Login | KratosError) {
   return dm;
 }
