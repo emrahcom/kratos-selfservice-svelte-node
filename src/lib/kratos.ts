@@ -62,6 +62,13 @@ export interface Login {
   "request_url": string;
 }
 
+// -----------------------------------------------------------------------------
+export interface Logout {
+  instanceOf: "Logout";
+  "logout_url": string;
+}
+
+// -----------------------------------------------------------------------------
 export interface KratosError {
   instanceOf: "KratosError";
   error: {
@@ -118,5 +125,27 @@ export async function getDataModels(flow: string, flowId: string) {
 
 // -----------------------------------------------------------------------------
 export function modelLogin(dm: Login | KratosError) {
+  return dm;
+}
+
+// -----------------------------------------------------------------------------
+export async function getLogoutData() {
+  const url = `${KRATOS}/self-service/logout/browser`;
+  const res = await fetch(url, {
+    credentials: "include",
+    headers: {
+      "Accept": "application/json",
+    },
+    mode: "cors",
+  });
+
+  const dm = await res.json();
+  dm.instanceOf = dm.logout_url ? "Logout" : "KratosError";
+
+  return dm;
+}
+
+// -----------------------------------------------------------------------------
+export function modelLogout(dm: Logout | KratosError) {
   return dm;
 }
