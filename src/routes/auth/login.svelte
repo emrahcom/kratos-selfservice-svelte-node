@@ -7,14 +7,12 @@ const modeling = getDataModels("login", flowId)
   .then((dm) => modelLogin(dm));
 </script>
 
-<div class="container" id="login">
-  <h5 class="subheading">Welcome to this example login screen!</h5>
-
 {#await modeling then dm}
-  <FormLogin {dm}/>
+  <div class="container" id="login">
+    <h2 class="subheading">Welcome to this example login screen!</h2>
+    <FormLogin {dm}/>
+  </div>
 {:catch err}
-  <h6>something went wrong</h6>
+  <p>something went wrong</p>
   {err.message}
 {/await}
-
-</div>

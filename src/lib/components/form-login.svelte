@@ -23,7 +23,8 @@ if (dm.instanceOf === "KratosError") console.error(dm);
   <div class="alternative-actions">
     <a href="{SECUREAPP}/auth/registration">Register new account</a>
     <a href="{SECUREAPP}/auth/recovery">Reset password</a>
+    <a href="{SECUREAPP}/auth/logout">Logout</a>
   </div>
 {:else}
-  <h6>Something went wrong</h6>
+  <p>Something went wrong</p>
 {/if}
