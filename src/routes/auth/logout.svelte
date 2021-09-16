@@ -12,10 +12,7 @@ export async function load() {
     };
   } else {
     console.log(dm);
-
-    return {
-      status: 200
-    }
+    return {};
   }
 }
 </script>
