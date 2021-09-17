@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-import { getLogoutData, modelKratos } from "$lib/kratos";
+import { getLogoutData } from "$lib/kratos";
+import type { LoadOutput } from "$lib/custom-types";
 
-export async function load() {
-  const dm = await getLogoutData()
-    .then((dm) => modelKratos(dm));
+export async function load(): Promise<LoadOutput> {
+  const dm = await getLogoutData();
 
   if (dm.instanceOf === "KratosLogout") {
     return {

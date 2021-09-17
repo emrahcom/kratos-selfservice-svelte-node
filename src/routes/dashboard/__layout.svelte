@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
 import { KRATOS } from "$lib/config";
 import { isAuthenticated } from "$lib/kratos";
+import type { LoadOutput } from "$lib/custom-types";
 
-export async function load() {
+export async function load(): Promise<LoadOutput> {
   const isAuth = await isAuthenticated()
     .catch(() => false);
 

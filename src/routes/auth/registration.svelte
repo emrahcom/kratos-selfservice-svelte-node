@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
 import { KRATOS, SECUREAPP } from "$lib/config";
-import { getDataModels, getFlowId, modelKratos } from "$lib/kratos";
+import { getDataModels, getFlowId } from "$lib/kratos";
+import type { LoadOutput } from "$lib/custom-types";
 
-export async function load() {
+export async function load(): Promise<LoadOutput> {
   const flowId = getFlowId();
 
   if (!flowId) {
@@ -12,8 +13,7 @@ export async function load() {
     };
   }
 
-  const dm = await getDataModels("registration", flowId)
-    .then((dm) => modelKratos(dm));
+  const dm = await getDataModels("registration", flowId);
 
   if (
     dm.instanceOf === "KratosError" && dm.error.details &&
