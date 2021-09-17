@@ -86,14 +86,14 @@ export interface KratosLogout {
 }
 
 // -----------------------------------------------------------------------------
-export function getFlowId() {
+export function getFlowId(): string {
   const qs = new URLSearchParams(window.location.search);
 
   return qs.get("flow");
 }
 
 // -----------------------------------------------------------------------------
-export async function isAuthenticated() {
+export async function isAuthenticated(): boolean {
   const url = `${KRATOS}/sessions/whoami`;
   const res = await fetch(url, {
     credentials: "include",
@@ -107,7 +107,10 @@ export async function isAuthenticated() {
 }
 
 // -----------------------------------------------------------------------------
-export async function getDataModels(flow: string, flowId: string) {
+export async function getDataModels(
+  flow: string,
+  flowId: string,
+): KratosForm | KratosError {
   const url = `${KRATOS}/self-service/${flow}/flows?id=${flowId}`;
   const res = await fetch(url, {
     credentials: "include",
@@ -124,14 +127,14 @@ export async function getDataModels(flow: string, flowId: string) {
   } else if (dm.ui) {
     dm.instanceOf = "KratosForm";
   } else {
-    dm.instanceOf = undefined;
+    throw new Error("unexpected Kratos object");
   }
 
   return dm;
 }
 
 // -----------------------------------------------------------------------------
-export async function getLogoutData() {
+export async function getLogoutData(): KratosLogout | KratosError {
   const url = `${KRATOS}/self-service/logout/browser`;
   const res = await fetch(url, {
     credentials: "include",
@@ -148,13 +151,8 @@ export async function getLogoutData() {
   } else if (dm.logout_url) {
     dm.instanceOf = "KratosLogout";
   } else {
-    dm.instanceOf = undefined;
+    throw new Error("unexpected Kratos object");
   }
 
-  return dm;
-}
-
-// -----------------------------------------------------------------------------
-export function modelKratos(dm: KratosForm | KratosLogout | KratosError) {
   return dm;
 }
