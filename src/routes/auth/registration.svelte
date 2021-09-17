@@ -44,12 +44,14 @@ if (dm.instanceOf === "KratosError") console.error(dm);
 
 {#if dm.instanceOf === "KratosForm"}
   <div class="container" id="registration">
-    <h2 class="subheading">Welcome to this example registration screen!</h2>
+    <h2 class="subheading">
+      Welcome to SecureApp!<br/>
+      Use the form below to sign up
+    </h2>
     <Form {dm}/>
     <hr class="divider">
     <div class="alternative-actions">
-      <a href="{SECUREAPP}/auth/login">Sign in</a>
-      <a href="{SECUREAPP}/auth/recovery">Reset password</a>
+      <a href="{SECUREAPP}/auth/login">Already have an account? Log in instead</a>
     </div>
   </div>
 {:else}
