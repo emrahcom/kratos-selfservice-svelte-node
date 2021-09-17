@@ -49,23 +49,17 @@ export interface UI {
 }
 
 // -----------------------------------------------------------------------------
-export interface Login {
-  instanceOf: "Login";
+export interface KratosForm {
+  instanceOf: "KratosForm";
   id: string;
   type: string;
-  forced: boolean;
+  forced?: boolean;
   ui: UI;
-  "created_at": string;
+  "created_at"?: string;
   "expires_at": string;
   "issued_at": string;
-  "updated_at": string;
+  "updated_at"?: string;
   "request_url": string;
-}
-
-// -----------------------------------------------------------------------------
-export interface Logout {
-  instanceOf: "Logout";
-  "logout_url": string;
 }
 
 // -----------------------------------------------------------------------------
@@ -83,6 +77,12 @@ export interface KratosError {
       "reject_reason": string;
     };
   };
+}
+
+// -----------------------------------------------------------------------------
+export interface KratosLogout {
+  instanceOf: "KratosLogout";
+  "logout_url": string;
 }
 
 // -----------------------------------------------------------------------------
@@ -118,13 +118,15 @@ export async function getDataModels(flow: string, flowId: string) {
   });
 
   const dm = await res.json();
-  dm.instanceOf = dm.ui ? "Login" : "KratosError";
 
-  return dm;
-}
+  if (dm.error) {
+    dm.instanceOf = "KratosError";
+  } else if (dm.ui) {
+    dm.instanceOf = "KratosForm";
+  } else {
+    dm.instanceOf = undefined;
+  }
 
-// -----------------------------------------------------------------------------
-export function modelLogin(dm: Login | KratosError) {
   return dm;
 }
 
@@ -140,12 +142,19 @@ export async function getLogoutData() {
   });
 
   const dm = await res.json();
-  dm.instanceOf = dm.logout_url ? "Logout" : "KratosError";
+
+  if (dm.error) {
+    dm.instanceOf = "KratosError";
+  } else if (dm.logout_url) {
+    dm.instanceOf = "KratosLogout";
+  } else {
+    dm.instanceOf = undefined;
+  }
 
   return dm;
 }
 
 // -----------------------------------------------------------------------------
-export function modelLogout(dm: Logout | KratosError) {
+export function modelKratos(dm: KratosForm | KratosLogout | KratosError) {
   return dm;
 }

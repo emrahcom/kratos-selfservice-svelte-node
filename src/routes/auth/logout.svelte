@@ -1,11 +1,11 @@
 <script lang="ts" context="module">
-import { getLogoutData, modelLogout } from "$lib/kratos";
+import { getLogoutData, modelKratos } from "$lib/kratos";
 
 export async function load() {
   const dm = await getLogoutData()
-    .then((dm) => modelLogout(dm));
+    .then((dm) => modelKratos(dm));
 
-  if (dm.instanceOf === "Logout") {
+  if (dm.instanceOf === "KratosLogout") {
     return {
       status: 302,
       redirect: `${dm.logout_url}`,
