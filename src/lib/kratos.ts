@@ -93,7 +93,7 @@ export function getFlowId(): string {
 }
 
 // -----------------------------------------------------------------------------
-export async function isAuthenticated(): Promise<boolean> {
+export async function isAuthenticated(): Promise<string | undefined> {
   const url = `${KRATOS}/sessions/whoami`;
   const res = await fetch(url, {
     credentials: "include",
@@ -103,7 +103,12 @@ export async function isAuthenticated(): Promise<boolean> {
     mode: "cors",
   });
 
-  return (res.status === 200) ? true : false;
+  if (res.status === 200) {
+    const dm = await res.json();
+    return dm.identity.traits.name.first;
+  } else {
+    return undefined;
+  }
 }
 
 // -----------------------------------------------------------------------------
