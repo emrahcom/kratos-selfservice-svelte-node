@@ -1,15 +1,16 @@
 <script lang="ts" context="module">
 import { KRATOS } from "$lib/config";
-import { isAuthenticated } from "$lib/kratos";
+import { getIdentity } from "$lib/kratos";
+import type { KratosIdentity } from "$lib/kratos-types";
 import type { LoadOutput } from "$lib/custom-types";
 
 export async function load(): Promise<LoadOutput> {
-  const firstName = await isAuthenticated();
+  const identity = await getIdentity();
 
-  if (firstName) {
+  if (identity) {
     return {
       props: {
-        firstName: firstName,
+        identity,
       },
     };
   } else {
@@ -24,9 +25,9 @@ export async function load(): Promise<LoadOutput> {
 <script lang="ts">
 import { setContext } from "svelte";
 
-export let firstName: string;
+export let identity: KratosIdentity;
 
-setContext("firstName", firstName);
+setContext("identity", identity);
 </script>
 
 <slot></slot>

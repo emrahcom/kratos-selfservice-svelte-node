@@ -1,6 +1,6 @@
 <script lang="ts">
 import Messages from "$lib/components/messages.svelte";
-import type { Node } from "$lib/kratos";
+import type { Node } from "$lib/kratos-types";
 
 export let node: Node;
 

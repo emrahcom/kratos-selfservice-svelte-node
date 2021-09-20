@@ -1,2 +1,2 @@
-export const KRATOS = "https://___KRATOS_FQDN___";
-export const SECUREAPP = "https://___SECUREAPP_FQDN___";
+export const KRATOS = "https://kratos.mydomain.corp";
+export const SECUREAPP = "https://secureapp.mydomain.corp";

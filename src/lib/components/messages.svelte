@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Message } from "$lib/kratos";
+import type { Message } from "$lib/kratos-types";
 
 export let messages: Message[];
 </script>

@@ -35,7 +35,7 @@ export async function load(): Promise<LoadOutput> {
 
 <script lang="ts">
 import Form from "$lib/components/form.svelte";
-import type { KratosForm, KratosError } from "$lib/kratos";
+import type { KratosForm, KratosError } from "$lib/kratos-types";
 
 export let dm: KratosForm | KratosError;
 

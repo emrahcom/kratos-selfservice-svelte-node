@@ -1,9 +1,19 @@
-import type { KratosError, KratosForm, KratosLogout } from "$lib/kratos";
+import type {
+  KratosError,
+  KratosForm,
+  KratosIdentity,
+  KratosLogout,
+} from "$lib/kratos-types";
 
 export interface LoadOutput {
   status?: number;
   redirect?: string;
   props?: {
-    [key: string]: string | KratosError | KratosForm | KratosLogout;
+    [key: string]:
+      | string
+      | KratosError
+      | KratosForm
+      | KratosIdentity
+      | KratosLogout;
   };
 }

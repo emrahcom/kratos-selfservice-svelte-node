@@ -1,7 +1,7 @@
 <script lang="ts">
 import Fieldsets from "$lib/components/fieldsets.svelte";
 import MessagesGlobal from "$lib/components/messages-global.svelte";
-import type { KratosForm } from "$lib/kratos";
+import type { KratosForm } from "$lib/kratos-types";
 
 export let dm: KratosForm;
 </script>

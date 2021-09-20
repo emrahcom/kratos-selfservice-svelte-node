@@ -1,10 +1,11 @@
 <script lang="ts">
-import { SECUREAPP } from "$lib/config";
 import { getContext } from "svelte";
+import { SECUREAPP } from "$lib/config";
+import type { KratosIdentity } from "$lib/kratos-types";
 
-const firstName = getContext("firstName");
+let identity: KratosIdentity = getContext("identity");
 </script>
 
 <h2>dashboard</h2>
-<p>Hello {firstName}</p>
+<p>Hello {identity.traits.name.first}</p>
 <a href="{SECUREAPP}/auth/logout">Logout</a>
