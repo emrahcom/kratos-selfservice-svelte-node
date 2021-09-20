@@ -6,6 +6,7 @@ import type { LoadOutput } from "$lib/custom-types";
 export async function load(): Promise<LoadOutput> {
   const flowId = getFlowId();
 
+  // get flowId if there is no one
   if (!flowId) {
     return {
       status: 302,
@@ -15,8 +16,10 @@ export async function load(): Promise<LoadOutput> {
 
   const dm = await getDataModels("registration", flowId);
 
+  // redirect if this is KratosError and there is a redirect_to
   if (
-    dm.instanceOf === "KratosError" && dm.error.details &&
+    dm.instanceOf === "KratosError" &&
+    dm.error.details &&
     dm.error.details.redirect_to
   ) {
     return {
@@ -25,9 +28,10 @@ export async function load(): Promise<LoadOutput> {
     };
   }
 
+  // return data models
   return {
     props: {
-      dm: dm,
+      dm,
     },
   };
 }
