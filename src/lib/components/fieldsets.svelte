@@ -9,7 +9,7 @@ import type { Node } from "$lib/kratos-types";
 export let nodes: Node[];
 </script>
 
-{#each nodes.filter((n) => n.type === "input") as node}
+{#each nodes as node}
   {#if node.attributes.type === "hidden"}
     <Hidden {node} />
   {:else if node.attributes.type === "password"}

@@ -51,7 +51,7 @@ if (dm.instanceOf === "KratosError") console.error(dm);
     <h2 class="subheading">Welcome to SecureApp!</h2>
     Use the form below to sign up
 
-    <Form {dm}/>
+    <Form {dm} groups={["default", "password"]} />
 
     <hr class="divider">
 
