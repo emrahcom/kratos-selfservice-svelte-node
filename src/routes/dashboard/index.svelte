@@ -8,4 +8,5 @@ const identity: KratosIdentity = getContext("identity");
 
 <h2>dashboard</h2>
 <p>Hello {identity.traits.name.first}</p>
+<a href="{SECUREAPP}/settings">Settings</a>
 <a href="{SECUREAPP}/auth/logout">Logout</a>
