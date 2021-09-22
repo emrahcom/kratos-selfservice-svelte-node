@@ -10,11 +10,11 @@ export async function load(): Promise<LoadOutput> {
   if (!flowId) {
     return {
       status: 302,
-      redirect: `${KRATOS}/self-service/registration/browser`,
+      redirect: `${KRATOS}/self-service/settings/browser`,
     };
   }
 
-  const dm = await getDataModels("registration", flowId);
+  const dm = await getDataModels("settings", flowId);
 
   // redirect if this is KratosError and there is a redirect_to
   if (
@@ -47,16 +47,15 @@ if (dm.instanceOf === "KratosError") console.error(dm);
 </script>
 
 {#if dm.instanceOf === "KratosForm"}
-  <div class="container" id="registration">
-    <h2 class="subheading">Registration</h2>
+  <div class="container" id="settings">
+    <h2 class="subheading">Settings</h2>
 
-    <Form {dm} groups={["default", "password"]} />
+    Profile
+    <Form {dm} groups={["default", "profile"]} />
 
     <hr class="divider">
 
-    <div class="alternative-actions">
-      <a href="{SECUREAPP}/auth/login">Already have an account? Log in instead</a>
-    </div>
+    <Form {dm} groups={["default", "password"]} />
   </div>
 {:else}
   <p>Something went wrong</p>
