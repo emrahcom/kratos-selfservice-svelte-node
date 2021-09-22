@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-import { KRATOS, SECUREAPP } from "$lib/config";
+import { KRATOS } from "$lib/config";
 import { getDataModels, getFlowId } from "$lib/kratos";
 import type { LoadOutput } from "$lib/custom-types";
 
@@ -50,12 +50,11 @@ if (dm.instanceOf === "KratosError") console.error(dm);
   <div class="container" id="settings">
     <h2 class="subheading">Settings</h2>
 
-    Profile
     <Form {dm} groups={["default", "profile"]} />
 
     <hr class="divider">
 
-    <Form {dm} groups={["default", "password"]} />
+    <Form {dm} groups={["default", "password"]} disableGlobalMessages={true} />
   </div>
 {:else}
   <p>Something went wrong</p>
