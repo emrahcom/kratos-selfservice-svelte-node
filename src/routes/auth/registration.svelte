@@ -1,20 +1,20 @@
 <script lang="ts" context="module">
-import { SECUREAPP } from "$lib/config";
-import { loadDataModels } from "$lib/kratos";
-import type { LoadOutput } from "$lib/custom-types";
+  import { loadDataModels } from "$lib/kratos";
+  import type { LoadOutput } from "$lib/custom-types";
 
-export async function load(): Promise<LoadOutput> {
-  return await loadDataModels("registration");
-}
+  export async function load(): Promise<LoadOutput> {
+    return await loadDataModels("registration");
+  }
 </script>
 
 <script lang="ts">
-import Form from "$lib/components/form.svelte";
-import type { KratosForm, KratosError } from "$lib/kratos-types";
+  import { SECUREAPP } from "$lib/config";
+  import type { KratosForm, KratosError } from "$lib/kratos-types";
+  import Form from "$lib/components/form.svelte";
 
-export let dm: KratosForm | KratosError;
+  export let dm: KratosForm | KratosError;
 
-if (dm.instanceOf === "KratosError") console.error(dm);
+  if (dm.instanceOf === "KratosError") console.error(dm);
 </script>
 
 {#if dm.instanceOf === "KratosForm"}

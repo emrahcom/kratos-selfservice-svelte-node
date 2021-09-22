@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { Message } from "$lib/kratos-types";
+  import type { Message } from "$lib/kratos-types";
 
-export let messages: Message[];
+  export let messages: Message[];
 </script>
 
 {#if messages}

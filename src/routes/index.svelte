@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SECUREAPP } from "$lib/config";
+  import { SECUREAPP } from "$lib/config";
 </script>
 
 <h2>welcome</h2>

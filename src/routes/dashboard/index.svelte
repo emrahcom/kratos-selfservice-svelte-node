@@ -1,9 +1,9 @@
 <script lang="ts">
-import { getContext } from "svelte";
-import { SECUREAPP } from "$lib/config";
-import type { KratosIdentity } from "$lib/kratos-types";
+  import { getContext } from "svelte";
+  import { SECUREAPP } from "$lib/config";
+  import type { KratosIdentity } from "$lib/kratos-types";
 
-const identity: KratosIdentity = getContext("identity");
+  const identity: KratosIdentity = getContext("identity");
 </script>
 
 <h2>Dashboard</h2>

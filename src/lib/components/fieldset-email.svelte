@@ -1,17 +1,17 @@
 <script lang="ts">
-import Messages from "$lib/components/messages.svelte";
-import type { Node } from "$lib/kratos-types";
+  import Messages from "$lib/components/messages.svelte";
+  import type { Node } from "$lib/kratos-types";
 
-export let node: Node;
+  export let node: Node;
 
-const attr = node.attributes;
-let labelText: string;
+  const attr = node.attributes;
+  let labelText: string;
 
-try {
-  labelText = node.meta.label.text;
-} catch {
-  labelText = attr.name;
-}
+  try {
+    labelText = node.meta.label.text;
+  } catch {
+    labelText = attr.name;
+  }
 </script>
 
 <fieldset>
