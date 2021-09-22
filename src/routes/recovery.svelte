@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-import { KRATOS, SECUREAPP } from "$lib/config";
+import { KRATOS } from "$lib/config";
 import { getDataModels, getFlowId } from "$lib/kratos";
 import type { LoadOutput } from "$lib/custom-types";
 
@@ -10,11 +10,11 @@ export async function load(): Promise<LoadOutput> {
   if (!flowId) {
     return {
       status: 302,
-      redirect: `${KRATOS}/self-service/login/browser`,
+      redirect: `${KRATOS}/self-service/recovery/browser`,
     };
   }
 
-  const dm = await getDataModels("login", flowId);
+  const dm = await getDataModels("recovery", flowId);
 
   // redirect if this is KratosError and there is a redirect_to
   if (
@@ -47,17 +47,11 @@ if (dm.instanceOf === "KratosError") console.error(dm);
 </script>
 
 {#if dm.instanceOf === "KratosForm"}
-  <div class="container" id="login">
-    <h2 class="subheading">Sign in</h2>
+  <div class="container" id="recovery">
+    <h2 class="subheading">recovery</h2>
 
-    <Form {dm} groups={["default", "password"]} />
+    <Form {dm} groups={["default", "link"]} />
 
-    <hr class="divider">
-
-    <div class="alternative-actions">
-      <a href="{SECUREAPP}/auth/registration">Register new account</a>
-      <a href="{SECUREAPP}/recovery">Reset password</a>
-    </div>
   </div>
 {:else}
   <p>Something went wrong</p>
