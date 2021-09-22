@@ -7,6 +7,7 @@
   }
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <script lang="ts">
   import { SECUREAPP } from "$lib/config";
   import type { KratosForm, KratosError } from "$lib/kratos-types";
@@ -17,6 +18,7 @@
   if (dm.instanceOf === "KratosError") console.error(dm);
 </script>
 
+<!-- -------------------------------------------------------------------------->
 {#if dm.instanceOf === "KratosForm"}
   <div class="container" id="login">
     <h2 class="subheading">Sign in</h2>

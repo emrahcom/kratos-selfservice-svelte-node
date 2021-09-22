@@ -9,6 +9,7 @@
   export let nodes: Node[];
 </script>
 
+<!-- -------------------------------------------------------------------------->
 {#each nodes as node}
   {#if node.attributes.type === "hidden"}
     <Hidden {node} />

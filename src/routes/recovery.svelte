@@ -7,6 +7,7 @@
   }
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <script lang="ts">
   import type { KratosForm, KratosError } from "$lib/kratos-types";
   import Form from "$lib/components/form.svelte";
@@ -16,6 +17,7 @@
   if (dm.instanceOf === "KratosError") console.error(dm);
 </script>
 
+<!-- -------------------------------------------------------------------------->
 {#if dm.instanceOf === "KratosForm"}
   <div class="container" id="recovery">
     <h2 class="subheading">recovery</h2>

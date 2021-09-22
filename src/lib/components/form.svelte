@@ -12,6 +12,7 @@
   );
 </script>
 
+<!-- -------------------------------------------------------------------------->
 {#if !disableGlobalMessages}
   <MessagesGlobal messages={dm.ui.messages} />
 {/if}

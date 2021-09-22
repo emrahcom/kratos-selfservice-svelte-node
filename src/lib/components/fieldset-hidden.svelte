@@ -6,4 +6,5 @@
   const attr = node.attributes;
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <input type="hidden" name="{attr.name}" value="{attr.value || ""}">

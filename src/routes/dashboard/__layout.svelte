@@ -21,6 +21,7 @@
   }
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <script lang="ts">
   import { setContext } from "svelte";
   import type { KratosIdentity } from "$lib/kratos-types";
@@ -30,4 +31,5 @@
   setContext("identity", identity);
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <slot></slot>

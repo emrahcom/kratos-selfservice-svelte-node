@@ -4,6 +4,7 @@
   export let messages: Message[];
 </script>
 
+<!-- -------------------------------------------------------------------------->
 {#if messages}
   {#each messages as msg}
     msg -

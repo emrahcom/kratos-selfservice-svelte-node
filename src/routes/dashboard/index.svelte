@@ -6,6 +6,7 @@
   const identity: KratosIdentity = getContext("identity");
 </script>
 
+<!-- -------------------------------------------------------------------------->
 <h2>Dashboard</h2>
 <p>Hello {identity.traits.name.first}</p>
 <a href="{SECUREAPP}/settings">Settings</a>
