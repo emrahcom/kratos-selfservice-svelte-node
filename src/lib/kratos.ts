@@ -1,4 +1,5 @@
 import { KRATOS } from "$lib/config";
+import type { LoadOutput } from "$lib/custom-types";
 import type {
   KratosError,
   KratosForm,
@@ -57,6 +58,40 @@ export async function getDataModels(
   }
 
   return dm;
+}
+
+// -----------------------------------------------------------------------------
+export async function loadDataModels(flow: string): Promise<LoadOutput> {
+  const flowId = getFlowId();
+
+  // get flowId if there is no one
+  if (!flowId) {
+    return {
+      status: 302,
+      redirect: `${KRATOS}/self-service/${flow}/browser`,
+    };
+  }
+
+  const dm = await getDataModels(flow, flowId);
+
+  // redirect if this is KratosError and there is a redirect_to
+  if (
+    dm.instanceOf === "KratosError" &&
+    dm.error.details &&
+    dm.error.details.redirect_to
+  ) {
+    return {
+      status: 302,
+      redirect: `${dm.error.details.redirect_to}`,
+    };
+  }
+
+  // return data models
+  return {
+    props: {
+      dm,
+    },
+  };
 }
 
 // -----------------------------------------------------------------------------
