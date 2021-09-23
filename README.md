@@ -25,3 +25,37 @@ export const SECUREAPP = "https://___SECUREAPP_FQDN___";
 ```bash
 npm run dev -- --host --port 4455
 ```
+
+## Pages
+
+- Landing page
+
+  `/`
+
+- Secure dashboard
+
+  `/dashboard`
+
+- Registration
+
+  `/auth/registration`
+
+- Login
+
+  `/auth/login`
+
+- Settings
+
+  `/settings`
+
+- Recovery
+
+  `/recovery`
+
+- Verification
+
+  `/verify`
+
+- Logout
+
+  `/auth/logout`
