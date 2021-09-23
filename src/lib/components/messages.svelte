@@ -7,7 +7,6 @@
 <!-- -------------------------------------------------------------------------->
 {#if messages}
   {#each messages as msg}
-    msg -
     {msg.id} -
     {msg.type} -
     {msg.text}<br/>
