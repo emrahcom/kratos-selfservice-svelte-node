@@ -1,6 +1,10 @@
 # kratos-selfservice-svelte-node
 
-In alpha stage.
+Self-service (Svelte)[https://svelte.dev/] node for (Ory
+Kratos)[https://github.com/ory/kratos].
+
+It has no style or decoration. Apply your custom style according to your
+application.
 
 ## Install
 
