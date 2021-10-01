@@ -9,6 +9,6 @@
   {#each messages as msg}
     {msg.id} -
     {msg.type} -
-    {msg.text}<br/>
+    {msg.text}<br />
   {/each}
 {/if}

@@ -24,7 +24,7 @@
 
     <Form {dm} groups={["default", "profile"]} />
 
-    <hr class="divider">
+    <hr class="divider" />
 
     <Form {dm} groups={["default", "password"]} disableGlobalMessages={true} />
   </div>

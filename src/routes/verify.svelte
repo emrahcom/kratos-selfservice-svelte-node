@@ -23,7 +23,6 @@
     <h2 class="subheading">verification</h2>
 
     <Form {dm} groups={["default", "link"]} />
-
   </div>
 {:else}
   <p>Something went wrong</p>

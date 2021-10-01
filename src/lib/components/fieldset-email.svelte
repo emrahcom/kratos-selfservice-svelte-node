@@ -18,9 +18,14 @@
 <fieldset>
   <label>
     <span>{labelText}</span>
-    <input type="email" name="{attr.name}" value="{attr.value || ""}"
-      placeholder="{labelText}" disabled={attr.disabled}
-      required={attr.required}>
+    <input
+      type="email"
+      name={attr.name}
+      value={attr.value || ""}
+      placeholder={labelText}
+      disabled={attr.disabled}
+      required={attr.required}
+    />
   </label>
 
   <Messages messages={node.messages} />

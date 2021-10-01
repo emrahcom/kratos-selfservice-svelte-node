@@ -25,10 +25,12 @@
 
     <Form {dm} groups={["default", "password"]} />
 
-    <hr class="divider">
+    <hr class="divider" />
 
     <div class="alternative-actions">
-      <a href="{SECUREAPP}/auth/login">Already have an account? Log in instead</a>
+      <a href="{SECUREAPP}/auth/login"
+        >Already have an account? Log in instead</a
+      >
     </div>
   </div>
 {:else}

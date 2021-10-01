@@ -7,8 +7,8 @@
   export let groups: string[];
   export let disableGlobalMessages = false;
 
-  const nodes = dm.ui.nodes.filter((n) =>
-    n.type === "input" && groups.includes(n.group)
+  const nodes = dm.ui.nodes.filter(
+    (n) => n.type === "input" && groups.includes(n.group),
   );
 </script>
 
@@ -18,7 +18,7 @@
 {/if}
 
 <div id="ui">
-  <form action="{dm.ui.action}" method="{dm.ui.method}">
+  <form action={dm.ui.action} method={dm.ui.method}>
     <Fieldsets {nodes} />
   </form>
 </div>

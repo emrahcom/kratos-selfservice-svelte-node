@@ -25,7 +25,7 @@
 
     <Form {dm} groups={["default", "password"]} />
 
-    <hr class="divider">
+    <hr class="divider" />
 
     <div class="alternative-actions">
       <a href="{SECUREAPP}/auth/registration">Register new account</a>

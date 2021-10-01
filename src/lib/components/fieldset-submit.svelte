@@ -14,6 +14,6 @@
 </script>
 
 <!-- -------------------------------------------------------------------------->
-<button type="submit" name="{attr.name}" value="{attr.value}">
+<button type="submit" name={attr.name} value={attr.value}>
   {labelText}
 </button>
