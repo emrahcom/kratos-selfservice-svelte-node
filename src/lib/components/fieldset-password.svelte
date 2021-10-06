@@ -6,6 +6,7 @@
   export let node: Node;
 
   const attr = node.attributes;
+  let isHidden = true;
   let labelText: string;
 
   try {
@@ -20,14 +21,14 @@
   <label>
     <span>{labelText}</span>
     <input
-      type="password"
+      type={isHidden ? "password" : "text"}
       name={attr.name}
       value={attr.value || ""}
       placeholder={labelText}
       disabled={attr.disabled}
       required={attr.required}
     />
-    <PasswordToggle />
+    <PasswordToggle bind:isHidden />
   </label>
 
   <Messages messages={node.messages} />

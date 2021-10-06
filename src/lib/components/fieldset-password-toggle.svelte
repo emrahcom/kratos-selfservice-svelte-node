@@ -1,16 +1,14 @@
 <script lang="ts">
-  let inputType = "password";
+  export let isHidden: boolean;
 
-  const togglePasswordVisibility = () => {
-    const input = document.querySelector('input[name="password"]');
-    inputType = input.getAttribute("type") === "password" ? "text" : "password";
-    input.setAttribute("type", inputType);
+  const toggleVisibility = () => {
+    isHidden = !isHidden;
   };
 </script>
 
 <!-- -------------------------------------------------------------------------->
-<svg class="password-visibility-toggle" on:click={togglePasswordVisibility}>
-  {#if inputType === "password"}
+<svg class="password-visibility-toggle" on:click={toggleVisibility}>
+  {#if isHidden}
     <path
       class="eye-open"
       d="M8 2.36365
