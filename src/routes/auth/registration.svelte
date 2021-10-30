@@ -9,7 +9,7 @@
 
 <!-- -------------------------------------------------------------------------->
 <script lang="ts">
-  import { SECUREAPP } from "$lib/config";
+  import { APP } from "$lib/config";
   import type { KratosForm, KratosError } from "$lib/kratos-types";
   import Form from "$lib/components/form.svelte";
 
@@ -28,7 +28,7 @@
     <hr class="divider" />
 
     <div class="alternative-actions">
-      <a href="{SECUREAPP}/auth/login"
+      <a href="{APP}/auth/login"
         >Already have an account? Log in instead</a
       >
     </div>

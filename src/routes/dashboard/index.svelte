@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext } from "svelte";
-  import { SECUREAPP } from "$lib/config";
+  import { APP } from "$lib/config";
   import type { KratosIdentity } from "$lib/kratos-types";
 
   const identity: KratosIdentity = getContext("identity");
@@ -9,5 +9,5 @@
 <!-- -------------------------------------------------------------------------->
 <h2>Dashboard</h2>
 <p>Hello {identity.traits.name.first}</p>
-<a href="{SECUREAPP}/settings">Settings</a>
-<a href="{SECUREAPP}/auth/logout">Logout</a>
+<a href="{APP}/settings">Settings</a>
+<a href="{APP}/auth/logout">Logout</a>

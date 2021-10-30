@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { SECUREAPP } from "$lib/config";
+  import { APP } from "$lib/config";
 </script>
 
 <!-- -------------------------------------------------------------------------->
 <h2>welcome</h2>
-<a href="{SECUREAPP}/dashboard">Dashboard</a>
+<a href="{APP}/dashboard">Dashboard</a>
