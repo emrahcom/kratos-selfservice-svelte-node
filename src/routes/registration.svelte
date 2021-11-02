@@ -3,7 +3,7 @@
   import type { LoadOutput } from "$lib/custom-types";
 
   export async function load(): Promise<LoadOutput> {
-    return await loadDataModels("login");
+    return await loadDataModels("registration");
   }
 </script>
 
@@ -20,16 +20,17 @@
 
 <!-- -------------------------------------------------------------------------->
 {#if dm.instanceOf === "KratosForm"}
-  <div class="container" id="login">
-    <h2 class="subheading">Sign in</h2>
+  <div class="container" id="registration">
+    <h2 class="subheading">Registration</h2>
 
     <Form {dm} groups={["default", "password"]} />
 
     <hr class="divider" />
 
     <div class="alternative-actions">
-      <a href="{APP}/auth/registration">Register new account</a>
-      <a href="{APP}/recovery">Reset password</a>
+      <a href="{APP}/login"
+        >Already have an account? Log in instead</a
+      >
     </div>
   </div>
 {:else}

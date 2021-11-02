@@ -40,11 +40,11 @@ npm run dev -- --host --port 4455
 
 - Registration
 
-  `/auth/registration`
+  `/registration`
 
 - Login
 
-  `/auth/login`
+  `/login`
 
 - Settings
 
@@ -56,8 +56,8 @@ npm run dev -- --host --port 4455
 
 - Verification
 
-  `/verify`
+  `/verification`
 
 - Logout
 
-  `/auth/logout`
+  `/logout`
