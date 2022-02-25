@@ -88,12 +88,22 @@ export interface KratosIdentity {
   id: string;
   traits: {
     email: string;
-    name: {
-      first: string;
-      last: string;
-    };
   };
   state: string;
   "created_at": string;
   "updated_at": string;
+}
+
+// -----------------------------------------------------------------------------
+export interface KratosLoad {
+  status?: number;
+  redirect?: string;
+  props?: {
+    [key: string]:
+      | string
+      | KratosError
+      | KratosForm
+      | KratosIdentity
+      | KratosLogout;
+  };
 }

@@ -4,7 +4,7 @@
   import Text from "$lib/components/fieldset-text.svelte";
   import Email from "$lib/components/fieldset-email.svelte";
   import Submit from "$lib/components/fieldset-submit.svelte";
-  import type { Node } from "$lib/kratos-types";
+  import type { Node } from "$lib/kratos/types";
 
   export let nodes: Node[];
 </script>

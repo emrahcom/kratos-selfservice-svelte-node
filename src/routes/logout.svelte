@@ -1,21 +1,20 @@
 <script lang="ts" context="module">
-  import { getLogoutData } from "$lib/kratos";
-  import type { LoadOutput } from "$lib/custom-types";
+  import { getLogoutDataModels } from "$lib/kratos";
+  import type { KratosLoad } from "$lib/kratos/types";
 
-  export async function load(): Promise<LoadOutput> {
-    const dm = await getLogoutData();
+  export async function load(): Promise<KratosLoad> {
+    const dm = await getLogoutDataModels();
 
     if (dm.instanceOf === "KratosLogout") {
       return {
         status: 302,
         redirect: `${dm.logout_url}`,
       };
-    } else {
-      console.log(dm);
-      return {};
     }
+
+    return {
+      status: 302,
+      redirect: "/",
+    };
   }
 </script>
-
-<!-- -------------------------------------------------------------------------->
-<p>something went wrong</p>

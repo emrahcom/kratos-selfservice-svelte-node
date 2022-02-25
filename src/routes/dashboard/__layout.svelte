@@ -1,34 +1,20 @@
 <script lang="ts" context="module">
   import { KRATOS } from "$lib/config";
-  import { getIdentity } from "$lib/kratos";
-  import type { LoadOutput } from "$lib/custom-types";
+  import { get } from "svelte/store";
+  import identity from "$lib/stores/kratos/identity";
 
-  export async function load(): Promise<LoadOutput> {
-    const identity = await getIdentity();
+  export async function load() {
+    const _identity = get(identity);
 
-    if (identity) {
-      return {
-        props: {
-          identity,
-        },
-      };
-    } else {
+    if (!_identity) {
       return {
         status: 302,
         redirect: `${KRATOS}/self-service/login/browser`,
       };
     }
+
+    return {};
   }
-</script>
-
-<!-- -------------------------------------------------------------------------->
-<script lang="ts">
-  import { setContext } from "svelte";
-  import type { KratosIdentity } from "$lib/kratos-types";
-
-  export let identity: KratosIdentity;
-
-  setContext("identity", identity);
 </script>
 
 <!-- -------------------------------------------------------------------------->

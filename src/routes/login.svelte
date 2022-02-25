@@ -1,37 +1,31 @@
-<script lang="ts" context="module">
-  import { loadDataModels } from "$lib/kratos";
-  import type { LoadOutput } from "$lib/custom-types";
-
-  export async function load(): Promise<LoadOutput> {
-    return await loadDataModels("login");
-  }
-</script>
-
-<!-- -------------------------------------------------------------------------->
 <script lang="ts">
-  import { APP } from "$lib/config";
-  import type { KratosForm, KratosError } from "$lib/kratos-types";
+  import { APP, KRATOS } from "$lib/config";
+  import { page } from "$app/stores";
+  import { getFlowId, getDataModels } from "$lib/kratos";
   import Form from "$lib/components/form.svelte";
 
-  export let dm: KratosForm | KratosError;
+  const flowId = getFlowId($page.url.search);
+  if (!flowId) window.location.href = `${KRATOS}/self-service/login/browser`;
 
-  if (dm.instanceOf === "KratosError") console.error(dm);
+  let promise = getDataModels("login", flowId);
 </script>
 
 <!-- -------------------------------------------------------------------------->
-{#if dm.instanceOf === "KratosForm"}
-  <div class="container" id="login">
-    <h2 class="subheading">Sign in</h2>
+{#await promise then dm}
+  {#if dm.instanceOf === "KratosForm"}
+    <div class="container" id="login">
+      <h2 class="subheading">Sign in</h2>
 
-    <Form {dm} groups={["default", "password"]} />
+      <Form {dm} groups={["default", "password"]} />
 
-    <hr class="divider" />
+      <hr class="divider" />
 
-    <div class="alternative-actions">
-      <a href="{APP}/registration">Register new account</a>
-      <a href="{APP}/recovery">Reset password</a>
+      <div class="alternative-actions">
+        <a href="{APP}/registration">Register new account</a>
+        <a href="{APP}/recovery">Reset password</a>
+      </div>
     </div>
-  </div>
-{:else}
-  <p>Something went wrong</p>
-{/if}
+  {:else}
+    <p>Something went wrong</p>
+  {/if}
+{/await}

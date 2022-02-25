@@ -1,33 +1,32 @@
-<script lang="ts" context="module">
-  import { loadDataModels } from "$lib/kratos";
-  import type { LoadOutput } from "$lib/custom-types";
-
-  export async function load(): Promise<LoadOutput> {
-    return await loadDataModels("settings");
-  }
-</script>
-
-<!-- -------------------------------------------------------------------------->
 <script lang="ts">
-  import type { KratosForm, KratosError } from "$lib/kratos-types";
+  import { KRATOS } from "$lib/config";
+  import { page } from "$app/stores";
+  import { getFlowId, getDataModels } from "$lib/kratos";
   import Form from "$lib/components/form.svelte";
 
-  export let dm: KratosForm | KratosError;
+  const flowId = getFlowId($page.url.search);
+  if (!flowId) window.location.href = `${KRATOS}/self-service/settings/browser`;
 
-  if (dm.instanceOf === "KratosError") console.error(dm);
+  let promise = getDataModels("settings", flowId);
 </script>
 
 <!-- -------------------------------------------------------------------------->
-{#if dm.instanceOf === "KratosForm"}
-  <div class="container" id="settings">
-    <h2 class="subheading">Settings</h2>
+{#await promise then dm}
+  {#if dm.instanceOf === "KratosForm"}
+    <div class="container" id="settings">
+      <h2 class="subheading">Settings</h2>
 
-    <Form {dm} groups={["default", "profile"]} />
+      <Form {dm} groups={["default", "profile"]} />
 
-    <hr class="divider" />
+      <hr class="divider" />
 
-    <Form {dm} groups={["default", "password"]} disableGlobalMessages={true} />
-  </div>
-{:else}
-  <p>Something went wrong</p>
-{/if}
+      <Form
+        {dm}
+        groups={["default", "password"]}
+        disableGlobalMessages={true}
+      />
+    </div>
+  {:else}
+    <p>Something went wrong</p>
+  {/if}
+{/await}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import Messages from "$lib/components/messages.svelte";
   import PasswordToggle from "$lib/components/fieldset-password-toggle.svelte";
-  import type { Node } from "$lib/kratos-types";
+  import type { Node } from "$lib/kratos/types";
 
   export let node: Node;
 

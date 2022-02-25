@@ -1,13 +1,10 @@
 <script lang="ts">
-  import { getContext } from "svelte";
   import { APP } from "$lib/config";
-  import type { KratosIdentity } from "$lib/kratos-types";
-
-  const identity: KratosIdentity = getContext("identity");
+  import identity from "$lib/stores/kratos/identity";
 </script>
 
 <!-- -------------------------------------------------------------------------->
 <h2>Dashboard</h2>
-<p>Hello {identity.traits.name.first}</p>
+<p>Hello {$identity.traits.email}</p>
 <a href="{APP}/settings">Settings</a>
 <a href="{APP}/logout">Logout</a>
