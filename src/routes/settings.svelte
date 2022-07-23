@@ -20,11 +20,7 @@
 
       <hr class="divider" />
 
-      <Form
-        {dm}
-        groups={["default", "password"]}
-        disableGlobalMessages={true}
-      />
+      <Form {dm} groups={["default", "password"]} />
     </div>
   {:else}
     <p>Something went wrong</p>

@@ -7,11 +7,8 @@
   const attr = node.attributes;
   let labelText: string;
 
-  try {
-    labelText = node.meta.label.text;
-  } catch {
-    labelText = attr.name;
-  }
+  labelText = attr.name;
+  if (node.meta && node.meta.label) labelText = node.meta.label.text;
 </script>
 
 <!-- -------------------------------------------------------------------------->
@@ -21,7 +18,7 @@
     <input
       type="text"
       name={attr.name}
-      value={attr.value || ""}
+      value={attr.value ?? ""}
       placeholder={labelText}
       disabled={attr.disabled}
       required={attr.required}

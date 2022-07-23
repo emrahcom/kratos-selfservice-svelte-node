@@ -9,11 +9,8 @@
   let isHidden = true;
   let labelText: string;
 
-  try {
-    labelText = node.meta.label.text;
-  } catch {
-    labelText = attr.name;
-  }
+  labelText = attr.name;
+  if (node.meta && node.meta.label) labelText = node.meta.label.text;
 </script>
 
 <!-- -------------------------------------------------------------------------->
