@@ -18,12 +18,12 @@
 
 <!-- -------------------------------------------------------------------------->
 <script lang="ts">
-  const signed = "signed in";
-  const unsigned = "not signed in";
+  const signed = "signed in (message from __layout)";
+  const unsigned = "not signed in (message from __layout)";
 </script>
 
 <!-- -------------------------------------------------------------------------->
-{#if $identity}
+{#if $identity.id}
   <p>{signed}</p>
 {:else}
   <p>{unsigned}</p>

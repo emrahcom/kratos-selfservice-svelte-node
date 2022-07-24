@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Messages from "$lib/components/messages.svelte";
+  import Messages from "$lib/components/kratos/messages.svelte";
   import type { Node } from "$lib/kratos/types";
 
   export let node: Node;
@@ -24,6 +24,6 @@
       required={attr.required}
     />
   </label>
-
-  <Messages messages={node.messages} />
 </fieldset>
+
+<Messages messages={node.messages} />

@@ -1,12 +1,10 @@
 <script lang="ts">
-  import Messages from "$lib/components/messages.svelte";
-  import PasswordToggle from "$lib/components/fieldset-password-toggle.svelte";
+  import Messages from "$lib/components/kratos/messages.svelte";
   import type { Node } from "$lib/kratos/types";
 
   export let node: Node;
 
   const attr = node.attributes;
-  let isHidden = true;
   let labelText: string;
 
   labelText = attr.name;
@@ -18,15 +16,14 @@
   <label>
     <span>{labelText}</span>
     <input
-      type={isHidden ? "password" : "text"}
+      type="email"
       name={attr.name}
-      value={attr.value || ""}
+      value={attr.value ?? ""}
       placeholder={labelText}
       disabled={attr.disabled}
       required={attr.required}
     />
-    <PasswordToggle bind:isHidden />
   </label>
-
-  <Messages messages={node.messages} />
 </fieldset>
+
+<Messages messages={node.messages} />

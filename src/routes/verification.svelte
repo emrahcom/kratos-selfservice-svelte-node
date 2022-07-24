@@ -1,30 +1,39 @@
 <script lang="ts">
   import { KRATOS } from "$lib/config";
   import { page } from "$app/stores";
+  import { browser } from "$app/env";
   import { get } from "svelte/store";
   import { getFlowId, getDataModels } from "$lib/kratos";
   import identity from "$lib/stores/kratos/identity";
-  import Form from "$lib/components/form.svelte";
+  import Form from "$lib/components/kratos/form.svelte";
+  import Messages from "$lib/components/kratos/messages.svelte";
 
   const _identity = get(identity);
-  if (!_identity) window.location.href = `${KRATOS}/self-service/login/browser`;
+  if (browser && !_identity)
+    window.location.href = `${KRATOS}/self-service/login/browser`;
 
   const flowId = getFlowId($page.url.search);
-  if (!flowId)
+  if (browser && !flowId)
     window.location.href = `${KRATOS}/self-service/verification/browser`;
 
-  let promise = getDataModels("verification", flowId);
+  const pr = getDataModels("verification", flowId);
 </script>
 
 <!-- -------------------------------------------------------------------------->
-{#await promise then dm}
-  {#if dm.instanceOf === "KratosForm"}
-    <div class="container" id="verification">
-      <h2 class="subheading">verification</h2>
+<section id="verification">
+  {#await pr then dm}
+    {#if dm.instanceOf === "KratosForm"}
+      <div class="container" id="verification">
+        <h2 class="subheading">verification</h2>
 
-      <Form {dm} groups={["default", "link"]} />
-    </div>
-  {:else}
-    <p>Something went wrong</p>
-  {/if}
-{/await}
+        {#if dm.ui.messages}
+          <Messages messages={dm.ui.messages} />
+        {:else}
+          <Form {dm} groups={["default", "link"]} />
+        {/if}
+      </div>
+    {:else}
+      <p>Something went wrong</p>
+    {/if}
+  {/await}
+</section>
