@@ -22,10 +22,17 @@ export const KRATOS = "https://___KRATOS_FQDN___";
 export const APP = "https://___APP_FQDN___";
 ```
 
-## Run
+## Run (dev)
 
 ```bash
 npm run dev -- --host --port 4455
+```
+
+## Run (prod)
+
+```bash
+npm run build
+node build/index.js
 ```
 
 ## Pages
