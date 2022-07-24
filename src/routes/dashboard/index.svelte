@@ -1,9 +1,6 @@
 <script lang="ts">
   import { APP } from "$lib/config";
-  import { get } from "svelte/store";
   import identity from "$lib/stores/kratos/identity";
-
-  const _identity = get(identity);
 </script>
 
 <!-- -------------------------------------------------------------------------->

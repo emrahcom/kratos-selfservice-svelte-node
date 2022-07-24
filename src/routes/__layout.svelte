@@ -18,15 +18,12 @@
 
 <!-- -------------------------------------------------------------------------->
 <script lang="ts">
-  const signed = "signed in (message from __layout)";
-  const unsigned = "not signed in (message from __layout)";
+  if ($identity.id) {
+    console.log("signed in");
+  } else {
+    console.log("not signed in");
+  }
 </script>
 
 <!-- -------------------------------------------------------------------------->
 <slot />
-
-{#if $identity.id}
-  <p>{signed}</p>
-{:else}
-  <p>{unsigned}</p>
-{/if}
