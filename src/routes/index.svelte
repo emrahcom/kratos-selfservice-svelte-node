@@ -9,11 +9,10 @@
 <!-- -------------------------------------------------------------------------->
 <section id="welcome">
   <h2>welcome</h2>
-  <p><a href="{APP}/dashboard">Dashboard</a></p>
 
   {#if !_identity.id}
-    <p>not signed in (message from index)</p>
+    <p><a href="{APP}/login">login</a></p>
   {:else}
-    <p>signed in (message from index)</p>
+    <p><a href="{APP}/dashboard">Dashboard</a></p>
   {/if}
 </section>
