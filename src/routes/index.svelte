@@ -12,8 +12,8 @@
   <p><a href="{APP}/dashboard">Dashboard</a></p>
 
   {#if !_identity.id}
-    <p>signed in (message from index)</p>
-  {:else}
     <p>not signed in (message from index)</p>
+  {:else}
+    <p>signed in (message from index)</p>
   {/if}
 </section>
