@@ -25,15 +25,13 @@ export const APP = "https://___APP_FQDN___";
 ## Run (dev)
 
 ```bash
-npm run dev -- --host --port 4455
+npm run dev
 ```
 
 ## Run (prod)
 
 ```bash
 npm run build
-
-export PORT=4455
 node build/index.js
 ```
 
