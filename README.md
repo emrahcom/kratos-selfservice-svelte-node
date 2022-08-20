@@ -25,7 +25,7 @@ export const APP = "https://___APP_FQDN___";
 ## Run (dev)
 
 ```bash
-npm run dev
+npm run dev -- --host --port 3000
 ```
 
 ## Run (prod)
