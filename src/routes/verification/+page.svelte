@@ -9,12 +9,15 @@
   import Messages from "$lib/components/kratos/messages.svelte";
 
   const _identity = get(identity);
-  if (browser && !_identity)
-    window.location.href = `${KRATOS}/self-service/login/browser`;
-
   const flowId = getFlowId($page.url.search);
-  if (browser && !flowId)
-    window.location.href = `${KRATOS}/self-service/verification/browser`;
+
+  if (browser) {
+    if (!_identity) {
+      window.location.href = `${KRATOS}/self-service/login/browser`;
+    } else if (!flowId) {
+      window.location.href = `${KRATOS}/self-service/verification/browser`;
+    }
+  }
 
   const pr = getDataModels("verification", flowId);
 </script>
