@@ -10,6 +10,4 @@ export async function load() {
     .catch(() => {
       //no identity
     });
-
-  return {};
 }
