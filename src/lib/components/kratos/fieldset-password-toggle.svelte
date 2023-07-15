@@ -8,7 +8,12 @@
 
 <!-- -------------------------------------------------------------------------->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<svg class="password-visibility-toggle" on:click={toggleVisibility}>
+<svg
+  class="password-visibility-toggle"
+  role="button"
+  tabindex="0"
+  on:click={toggleVisibility}
+>
   {#if isHidden}
     <path
       class="eye-open"
