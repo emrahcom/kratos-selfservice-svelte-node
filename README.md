@@ -6,6 +6,9 @@ Apply your custom style according to your application.
 
 ## Install
 
+- `git`, `nodejs` and `yarn` must be installed
+- a working `Ory Kratos` is needed
+
 ```bash
 git clone https://github.com/emrahcom/kratos-selfservice-svelte-node.git
 
