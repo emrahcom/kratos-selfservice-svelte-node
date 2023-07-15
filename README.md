@@ -10,7 +10,7 @@ Apply your custom style according to your application.
 git clone https://github.com/emrahcom/kratos-selfservice-svelte-node.git
 
 cd kratos-selfservice-svelte-node
-npm install
+yarn install
 ```
 
 ## Config
@@ -25,13 +25,13 @@ export const APP = "https://___APP_FQDN___";
 ## Run (dev)
 
 ```bash
-npm run dev -- --host --port 3000
+yarn run dev -- --host --port 3000
 ```
 
 ## Run (prod)
 
 ```bash
-npm run build
+yarn run build
 node build/index.js
 ```
 
