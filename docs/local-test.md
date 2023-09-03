@@ -6,6 +6,12 @@
 git clone https://github.com/ory/kratos.git
 cd kratos
 git checkout v1.0.0
+```
+
+Update `./contrib/quickstart/kratos/email-password/kratos.yml` according to
+`my-kratos.yml` in this folder.
+
+```bash
 docker-compose -f quickstart.yml up --build --force-recreate
 ```
 
