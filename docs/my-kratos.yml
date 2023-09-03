@@ -7,8 +7,10 @@ serve:
     base_url: https://kratos.mydomain.corp/
     cors:
       enabled: true
+      allowed_origins:
+        - https://app.mydomain.corp
   admin:
-    base_url: http://kratos:4434/
+    base_url: http://kratos.mydomain.corp:4434/
 
 selfservice:
   default_browser_return_url: https://app.mydomain.corp/
