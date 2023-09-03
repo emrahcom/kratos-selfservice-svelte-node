@@ -29,7 +29,7 @@ server {
   listen [::]:443 ssl;
 
   include snippets/snakeoil.conf;
-  server_name kratos.docker.corp;
+  server_name kratos.mydomain.corp;
 
   location / {
     proxy_pass http://172.18.18.1:4433;
