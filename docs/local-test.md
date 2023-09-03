@@ -57,6 +57,23 @@ server {
     proxy_set_header Host $http_host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $remote_addr;
+    tcp_nodelay on;
+  }
+}
+
+server {
+  listen 3000 ssl;
+  listen [::]:3000 ssl;
+
+  include snippets/snakeoil.conf;
+  server_name app.mydomain.corp;
+
+  location / {
+    proxy_pass http://172.18.18.1:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     tcp_nodelay on;
