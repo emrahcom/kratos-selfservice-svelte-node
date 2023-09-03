@@ -6,7 +6,7 @@
 git clone https://github.com/ory/kratos.git
 cd kratos
 git checkout v1.0.0
-docker-compose -f quickstart.yml -f quickstart-standalone.yml up --build --force-recreate
+docker-compose -f quickstart.yml up --build --force-recreate
 ```
 
 ## App
