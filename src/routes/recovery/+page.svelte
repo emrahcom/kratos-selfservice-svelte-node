@@ -23,7 +23,7 @@
         {#if dm.ui.messages}
           <Messages messages={dm.ui.messages} />
         {:else}
-          <Form {dm} groups={["default", "link"]} />
+          <Form {dm} groups={["default", "code"]} />
         {/if}
       </div>
     {:else}
