@@ -21,8 +21,8 @@ yarn install
 Change `src/lib/config.ts` according to your environment.
 
 ```javascript
-export const KRATOS = "https://___KRATOS_FQDN___";
-export const APP = "https://___APP_FQDN___";
+export const KRATOS = "https://kratos.mydomain.corp";
+export const APP = "https://app.mydomain.corp";
 ```
 
 ## Run (dev)
