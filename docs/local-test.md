@@ -19,7 +19,7 @@ docker-compose -f quickstart.yml up --build --force-recreate
 
 ```bash
 cd kratos-selfservice-svelte-node
-yarn run dev -- --host --port 3000
+yarn run dev --host --port 3000
 ```
 
 ## Nginx
