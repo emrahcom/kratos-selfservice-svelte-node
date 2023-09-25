@@ -28,7 +28,7 @@ export const APP = "https://app.mydomain.corp";
 ## Run (dev)
 
 ```bash
-yarn run dev -- --host --port 3000
+yarn run dev --host --port 3000
 ```
 
 ## Run (prod)
